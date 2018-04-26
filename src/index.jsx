@@ -1,27 +1,42 @@
 import React, { Component as C } from 'react';
 import { render as r } from 'react-dom';
 
-class Counter extends C {
-  constructor(props) {
-    super();
-    const { stars } = props;
-    this.state = { stars };
-  }
-  plus() {
-    const stars = +this.state.stars + 1;
-    this.setState({ stars });
-  }
-  render() {
-    return (
-      <div>Лайкер <hr />
-        <button onClick={() => this.plus()}><span role="img" aria-label="add">➕</span></button> <Stars length={this.state.stars} />
-      </div>);
-  }
+class VoteButton extends С {
+    constructor(props) {
+        super(props);
+        this.state = { votes: props.votes };
+      }
+    handleClick(delta) {
+      this.setState({ votes: this.state.votes += delta });
+    }
+    render() {
+      return (<div className="button">
+         <button onClick={this.handleClick.bind(this, 1)}>{ this.props.title }⬆︎</button>  
+         <strong> голосов: { this.state.votes }</strong></div>
+      );
+    }
 }
-const Stars = ({ length }) =>
-  <span>{Array.from({ length }, (v, i) => ++i).map(() => '⭐️').join('')}</span>;
+
+class VoteButtonList extends С {
+      constructor(props) {
+        super(props);
+        this.state = { frameworks: [] };
+      }
+      async componentDidMount() {
+        const frameworks = await fetch(this.props.url).then(x => x.json());
+        this.setState({ frameworks });
+  }
+      render(){
+        const buttons = this.state.frameworks.map(x => <VoteButton key={x.id} title={x.title} votes={x.votes} />);
+        return (
+          <ul>
+            { buttons }
+          </ul>
+        );
+      }
+}
 r(
-  <div><Counter stars="3" /><Counter stars="10" /></div>,
+  <VoteButtonList url="https://kodaktor.ru/j/react5b_6cbf2" />,
   document.querySelector('.cont'),
 );
 
