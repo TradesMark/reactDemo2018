@@ -1,36 +1,21 @@
 import React from 'react';
 import { render as r } from 'react-dom';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import DatePicker from 'material-ui/DatePicker';
+import moment from 'moment';
 import Counter from './Counter';
-import Map from './Map';
-import Gallery from './Gallery';
 
-const Content = () => (
-  <main>
-    <Switch>
-      <Route exact path="/" component={Map} />
-      <Route path="/gallery" component={Gallery} />
-      <Route path="/counter" component={Counter} />
-    </Switch>
-  </main>
-);
+const f = 'DD.MM.YYYY HH:mm:ss';
 
-const Menu = () => (
-  <header>
-    <nav>
-      <ul>
-        <li><Link to="/">Карта</Link></li>
-        <li><Link to="/gallery">Галерея</Link></li>
-        <li><Link to="/counter">Отзывы</Link></li>
-      </ul>
-    </nav>
-  </header>
-);
 const App = () => (
-  <div><Menu /><Content />
+  <div><Counter stars="3" />
+    <DatePicker
+      onChange={(n = null, date) => alert(moment(date).format(f))}
+      floatingLabelText="Выберите дату!"
+    />
   </div>);
 
 r(
-  <BrowserRouter><App /></BrowserRouter>,
+  <MuiThemeProvider><App /></MuiThemeProvider>,
   document.querySelector('.cont'),
 );
