@@ -20,7 +20,4 @@ class Counter extends C {
 const Stars = ({ length }) =>
   <span>{Array.from({ length }, (v, i) => ++i).map(() => '⭐️').join('')}</span>;
 
-export default () => (
-  <div><Counter stars="3" />
-    <Counter stars="10" />
-  </div>);
+export default Counter;
