@@ -6,6 +6,9 @@ class Counter extends C {
     const { stars } = props;
     this.state = { stars };
   }
+  componentWillReceiveProps(nextProps) {
+    this.setState({ stars: nextProps.stars });
+  }
   plus() {
     const stars = +this.state.stars + 1;
     this.setState({ stars });
