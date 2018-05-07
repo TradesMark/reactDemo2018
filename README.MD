@@ -2,6 +2,10 @@ REACT DEMO 2018
 
 Развёртывание приложения в консоли с нуля.
 
+По сравнению с этой очень важна ветка heroku — там находится основа для готового к деплою приложения.
+
+---
+
 https://www.youtube.com/watch?v=MSTj93konow или http://kodaktor.ru/react-demo-2018/ 
 
 ```bash
