@@ -1,9 +1,8 @@
 import React from 'react';
 import { render as r } from 'react-dom';
+import Tasker from './Tasker';
 
-const Stars = ({ length }) =>
-  <span>{Array.from({ length }, (v, i) => ++i).map(() => '⭐️').join('')}</span>;
 r(
-  <div><Stars length="5" /></div>,
+  <div><Tasker /></div>,
   document.querySelector('.cont'),
 );
