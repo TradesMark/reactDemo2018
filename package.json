@@ -2,7 +2,6 @@
   "scripts": {
     "build": "webpack-dev-server",
     "prod": "webpack --config webpack.production.babel.js",
-    "postinstall": "./node_modules/webpack/bin/webpack.js --config webpack.production.babel.js",
     "start": "node --experimental-modules s.mjs",
     "help": "echo 'это для хироку и все зависимости слиты в dependencies'"
   },

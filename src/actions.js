@@ -1,4 +1,4 @@
-export const ADD_TASK = Symbol();
+export const ADD_TASK = 'ADD_TASK';
 
 export default function addTask(item) {
   return ({

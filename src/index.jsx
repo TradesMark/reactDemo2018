@@ -6,7 +6,9 @@ import taskReducer from './reducers';
 import App from './App';
 
 
-const store = createStore(taskReducer);
+const store = createStore(taskReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 r(
   <Provider store={store}><App /></Provider>,
