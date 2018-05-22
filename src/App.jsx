@@ -4,7 +4,14 @@ import { connect } from 'react-redux';
 import { store } from './index'; // прикольно что index импортирует App
 import addTask from './actions';
 
-class App extends React.Component {
+function mapStateToProps(state){
+  return ({
+    list: state.list,
+  });
+}
+
+@connect(mapStateToProps)
+export default class extends React.Component {
   /*
     constructor() {
       super();
@@ -31,7 +38,3 @@ class App extends React.Component {
     );
   }
 }
-
-export default connect(state => ({
-  list: state.list,
-}))(App);

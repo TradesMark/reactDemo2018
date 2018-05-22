@@ -17,7 +17,7 @@ export default {
             modules: false,
           }],
         ],
-        plugins: ['transform-object-rest-spread', 'transform-function-bind'],
+        plugins: ['transform-object-rest-spread', 'transform-function-bind', 'transform-decorators-legacy'],
       },
     }],
   },
